@@ -1,3 +1,4 @@
+const print = console.log
 // JavaScript é uma linguagem dinâmicamente tipada e interpretada
 
 // //cons são valores constantes, que apontam sempre para o valor atribuido inicialmente
@@ -21,6 +22,7 @@
 // var d = "abcd"
 
 // Exemplo var
+// qualquer variavel declarada sem especificar seu tipo vai ser var por padrão
 // var linguagem = "JavaScript"
 // console.log ("Aprendendo " + linguagem)
 // // variavel pode ser redeclarada
@@ -72,15 +74,15 @@
 // exemplo em java que é fortemente tipada
 // int a = (int) 3.5; o valor não é "perdido"
 
-// Coerção
-const n1 = 2 // valor primitivo não pode ser alterado (porém o tipo pode - encontra-se outro objeto de valor primitivo 2 com outro tipo)
-const n2 = '3' // não existe o tipo char
-// Coerção implícita (n1 é convertido para string que é concatenado com n2)
-const n3 = n1 + n2
-console.log("valor de n3: " + n3 + "\ttipo de n3: " + typeof(n3))
-// Coerção explícita, pode ser convertido para number também com: n1 + +n2 - o '+' converte n2 para number
-const n4 = n1 + Number(n2) 
-console.log("valor de n4: " + n4 + "\ttipo de n4: " + typeof(n4))
+// // Coerção
+// const n1 = 2 // valor primitivo não pode ser alterado (porém o tipo pode - encontra-se outro objeto de valor primitivo 2 com outro tipo)
+// const n2 = '3' // não existe o tipo char
+// // Coerção implícita (n1 é convertido para string que é concatenado com n2)
+// const n3 = n1 + n2
+// console.log("valor de n3: " + n3 + "\ttipo de n3: " + typeof(n3))
+// // Coerção explícita, pode ser convertido para number também com: n1 + +n2 - o '+' converte n2 para number
+// const n4 = n1 + Number(n2) 
+// console.log("valor de n4: " + n4 + "\ttipo de n4: " + typeof(n4))
 
 // = atribuição
 // == comparação (com coerção implícita) -> IGNORAR A EXISTÊNCIA (exceto em sistemas LEGADOS)
@@ -149,25 +151,25 @@ console.log("valor de n4: " + n4 + "\ttipo de n4: " + typeof(n4))
 //     }
 // }
 
-const nomes = [
-    "Ana Maria",
-    "Antonio",
-    "Alex",
-    "Martin",
-    "Rodrigo",
-    "Cristina",
-    "Amir",
-    "Alojão"
-]
+// const nomes = [
+//     "Ana Maria",
+//     "Antonio",
+//     "Alex",
+//     "Martin",
+//     "Rodrigo",
+//     "Cristina",
+//     "Amir",
+//     "Alojão"
+// ]
 
 
-// ambiente de linguagem declarativa (especifica-se o que você quer e o ambiente cuida disso) o JS é um ambiente declarativo
-// exemplo: SQL
-// Pessoa: id, nome, idade
-// SELECT nome, idade FROM pessoa - declara-se o que se quer e o ambiente cuida do resto, não especifica-se os loops, etc.
+// // ambiente de linguagem declarativa (especifica-se o que você quer e o ambiente cuida disso) o JS é um ambiente declarativo
+// // exemplo: SQL
+// // Pessoa: id, nome, idade
+// // SELECT nome, idade FROM pessoa - declara-se o que se quer e o ambiente cuida do resto, não especifica-se os loops, etc.
 
-// arrow function (função sem nome)
-// () => { } serve para ser passada como parametro
+// // arrow function (função sem nome)
+// // () => { } serve para ser passada como parametro
 
 // // encontrar todos os nomes que começam com A
 // const apenasA = nomes.filter((n) => { // n de nome, como se fosse um foreach, o filter itera sobre os componentes de nomes, aplicando a função a cada um, acessando o valor pelo n
@@ -184,8 +186,49 @@ const nomes = [
 // const resultado = nomes.every((nome) => nome.startsWith("A")) // verifica se todos os elementos começam com A
 // console.log(resultado)
 
-const valores = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-const soma = valores.reduce((ac, atual) => ac + atual) // se não é passado um valor inicial, ac vale o primeiro item do array e atual vale o segundo
-//Função callback (cria-se uma função que vai ser chamada por alguem no futuro), por exemplo função chamada ao pressionar botões
+// const valores = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// const soma = valores.reduce((ac, atual) => ac + atual) // se não é passado um valor inicial, ac vale o primeiro item do array e atual vale o segundo
+// //Função callback (cria-se uma função que vai ser chamada por alguem no futuro), por exemplo função chamada ao pressionar botões
 
-console.log(soma)
+// console.log(soma)
+
+// // Criando funções:
+// function nome(parametro1, parametro2, parametroN){
+//     //Corpo da funcao
+//     console.log("Chada da função")
+// }
+// nome()
+// // Não tem sobrecarga de métodos, caso haja mais de uma definição da mesma função, a dupla passagem sobreescreve a função e a predominante será a última
+function soma (a, b){
+    return a + b
+}
+const res = soma(2, 3)
+console.log(res)
+const dobro = (n) => 2*n
+console.log(dobro(3))
+console.log(typeof(dobro))
+
+// funções são cidadãs de primeira classe, pode receber funções como parâmetro, produzir e chamalas
+// função que recebe outra função como parâmetro ou que cria uma funçãp: Higher Order function
+let umaFuncao = () => print("Fui armazenada em uma variável")
+umaFuncao()
+
+function f (funcao){ // higher order function
+    // callable
+    funcao()
+}
+
+function g(){ // higher order function
+    function outraFuncao(){
+        print("Fui criada por g")
+    }
+    return outraFuncao
+}
+
+f(function () {
+    print("Estou sendo passada para f")
+})
+
+//f(3) // valor não callable sendo tratado como callable
+print(g())
+g()()
