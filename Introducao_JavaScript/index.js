@@ -159,7 +159,7 @@ const nomes = [
     "Amir",
     "Alojão"
 ]
-// encontrar todos os nomes que começam com A
+
 
 // ambiente de linguagem declarativa (especifica-se o que você quer e o ambiente cuida disso) o JS é um ambiente declarativo
 // exemplo: SQL
@@ -167,6 +167,25 @@ const nomes = [
 // SELECT nome, idade FROM pessoa - declara-se o que se quer e o ambiente cuida do resto, não especifica-se os loops, etc.
 
 // arrow function (função sem nome)
-() => { }
+// () => { } serve para ser passada como parametro
 
-nomes.filter()
+// // encontrar todos os nomes que começam com A
+// const apenasA = nomes.filter((n) => { // n de nome, como se fosse um foreach, o filter itera sobre os componentes de nomes, aplicando a função a cada um, acessando o valor pelo n
+//     return n.startsWith("A")
+// })
+// // a coleção inicial nomes permanece inalterada, pode-se armazenar em apenasA
+// console.log(apenasA)
+
+// // encontrar coleção composta pelas iniciais
+// const mapeamento = nomes.map((nome) => nome.charAt(0))
+// console.log(mapeamento)
+
+// // Verificar se todos os elementos correspondem a um certo critério
+// const resultado = nomes.every((nome) => nome.startsWith("A")) // verifica se todos os elementos começam com A
+// console.log(resultado)
+
+const valores = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const soma = valores.reduce((ac, atual) => ac + atual) // se não é passado um valor inicial, ac vale o primeiro item do array e atual vale o segundo
+//Função callback (cria-se uma função que vai ser chamada por alguem no futuro), por exemplo função chamada ao pressionar botões
+
+console.log(soma)
