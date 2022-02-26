@@ -56,3 +56,117 @@
 // console.log ("Até mais " + nome)
 // // na primeira passagem (leitura) o interpretador constroi uma estrutura de dados contendo as váriaveis declaradas
 // // se a variável for o let, também é armazenado seu escopo
+
+// Sistema de tipos existe e ocorre somente em tempo de execução - tipagem dinâmica.
+// let a = "abc" // - a é String
+// a = 2 // - a é number
+
+// let a = null
+// let b
+// console.log(a) // - a é null (valor atribuido)
+// console.log(typeof(b)) // - b é undefined (camada de proteção contra valores aleatórios da memória)
+
+// Linguagens fortemente tipada
+// exemplo em C que não é:
+// int a = 3.5; (perde-se o 0.5)
+// exemplo em java que é fortemente tipada
+// int a = (int) 3.5; o valor não é "perdido"
+
+// Coerção
+const n1 = 2 // valor primitivo não pode ser alterado (porém o tipo pode - encontra-se outro objeto de valor primitivo 2 com outro tipo)
+const n2 = '3' // não existe o tipo char
+// Coerção implícita (n1 é convertido para string que é concatenado com n2)
+const n3 = n1 + n2
+console.log("valor de n3: " + n3 + "\ttipo de n3: " + typeof(n3))
+// Coerção explícita, pode ser convertido para number também com: n1 + +n2 - o '+' converte n2 para number
+const n4 = n1 + Number(n2) 
+console.log("valor de n4: " + n4 + "\ttipo de n4: " + typeof(n4))
+
+// = atribuição
+// == comparação (com coerção implícita) -> IGNORAR A EXISTÊNCIA (exceto em sistemas LEGADOS)
+// === comparação (SEM coerção implícita, compara primeiro por tipo E depois por (caso o tipo seja igual) valor)
+
+// console.log (1 == 1)
+// console.log (1 == '1')
+// console.log (1 === 1)
+// console.log (1 === '1') // false - sem conversão implícita
+// console.log(true == 1) // true
+//console.log(true == 2) // false
+//console.log(1 == [1]) // true
+// console.log(1 == [])
+// console.log(1 == [2])
+// console.log(1 == [1, 1])
+// console.log(Number([1, 1]))
+// console.log(typeof(Number([1, 1])))
+// console.log(null == null)
+// console.log(null == undefined)
+// console.log([] == false)
+// console.log([] == [])
+// console.log([] === []) // vetores vazios são dois objetos diferentes na memória Heap
+// const a = []
+// const b = a
+// console.log( a === b)
+// console.log("" === "") // faz comparação por valores apenas
+// a = "abc"
+// b = "abc"
+// console.log( a === b)
+//console.log([1, 1] == true)
+//console.log(Boolean([1, 1]))
+
+// Vetores
+// const v1 = [] // Similar ao ArrayList do java
+// console.log(v1.length)
+// v1[0] = 3.4
+// v1[2] = "abc"
+// v1[10] = 2
+// console.log(v1.length)
+// for (let i = 0; i < v1.length; i++){
+//     console.log(v1[i])
+// }
+//
+// Trecho em C para exemplo
+// int v[4]; - tamanho 4 para sempre
+// 
+// const v = []
+// console.log(v.length)
+// v = [] // NÃO É POSSÍVEL REATRIBUIR O VETOR
+// v[100] = 2
+// console.log(v.length)
+// const v2 = [2, "abc", true]
+
+// Metodos auxiliares dos vetores
+
+// class Pessoa{
+//     andar(){
+
+//     }
+
+//     variavel = andar; // ARMAZENA-SE O MÉTODO NA VARIÁVEL
+
+//     m(){
+//         andar()
+//         variavel(); // chama o andar() que está armazenado na variavel
+//     }
+// }
+
+const nomes = [
+    "Ana Maria",
+    "Antonio",
+    "Alex",
+    "Martin",
+    "Rodrigo",
+    "Cristina",
+    "Amir",
+    "Alojão"
+]
+// encontrar todos os nomes que começam com A
+
+// ambiente de linguagem declarativa (especifica-se o que você quer e o ambiente cuida disso) o JS é um ambiente declarativo
+// exemplo: SQL
+// Pessoa: id, nome, idade
+// SELECT nome, idade FROM pessoa - declara-se o que se quer e o ambiente cuida do resto, não especifica-se os loops, etc.
+
+// arrow function (função sem nome)
+() => { }
+
+nomes.filter()
