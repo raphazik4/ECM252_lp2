@@ -1,4 +1,9 @@
 const print = console.log
+
+function delayMilliseconds(time = 1000){
+    const futureTime = new Date().getTime() + time // wait 1 second for default
+    while (new Date().getTime() <= futureTime);
+}
 // JavaScript é uma linguagem dinâmicamente tipada e interpretada
 
 // //cons são valores constantes, que apontam sempre para o valor atribuido inicialmente
@@ -380,3 +385,138 @@ const print = console.log
 // const martinData = {nome, oculos}
 
 // print(martinData)
+
+// // Estruturas sequenciais
+
+// print("Eu primeiro")
+// print("Agora eu...")
+// print("Sempre vou ser a última...")
+
+// // Exemplo:
+// const a = 2+7
+// const b = 5
+// const c = a + b // necessária
+// print(c)
+
+// function demorada(time = 2000){
+//     print("Inicia-se a demorada")
+//     const atualMais2Segundos = new Date().getTime() + time
+//     while (new Date().getTime() <= atualMais2Segundos);
+//     const d = 8+4
+//     print("Fim da demorada")
+//     return d
+// }
+
+// const a = 2 + 4
+// const b = 5 + 9
+// //const d = demorada() // a execução da linha seguinte fica bloqueada até que essa termine
+
+// setTimeout(() => { // AGENDAMENTO DE EXECUÇÃO DO ESCOPO, o bloco interno é executado em no mínimo 500 ms
+//     print("Funcao agendada")
+//     const d = demorada()
+//     print (d)
+// }, 500)
+
+// const e = a + b + 2 // processamento síncrono, bloqueante
+// print(e)
+// demorada(5000)
+
+// setTimeout(() => { // SEM PARALELISMO, SISTEMA DE AGENDAMENTO DE FUNCOES APÓS A EXECUCAO TOTAL DO SCRIPT (vai colocando os blocos em uma fila ordenada pelo parâmetro passado após o bloco)
+//     print("Dentro da timeout")
+// }, 0) // PURO ORDENAMENTO DA FILA CASO NEGATIVO, OU ESPERA NO MÍNIMO O VALOR EM MILISEGUNDOS PARA A EXECUCAO NA ORDEM DA FILA
+
+// delayMilliseconds(1000)
+// print("Fora da timeout")
+
+// CUIDADO COM O SINCRONISMO
+// let abelha = 222
+// setTimeout(() => {
+//     print(abelha)
+// }, 500)
+
+// abelha = 666
+
+// CALLBACKS - SITEMA ANTIGO CORRIGIDO POR PROMISE
+// const fs = require('fs')
+// // funções callback
+// // intenção: abrir um txt e exibir na tela
+// const abrirArquivo = function(nomeArquivo){
+
+//     const funcaoCallBackParaExiberConteudoNoFuturo = function(erro, conteudo) {
+//         if (erro)
+//             print(`Deu erro: ${erro}`)
+//         else{
+//             print(`Conteúdo:\n${conteudo.toString()}`)
+//             print("")
+//             const triplo = +conteudo.toString() * 3
+            
+//             const finalizar = (erro) => { // outra funcao callback
+//                 if (erro)
+//                     print("Erro ao salvar o triplo")
+//                 else
+//                     print("Triplo salvo com sucesso")
+//             }
+
+//             fs.writeFile('triplo.txt', triplo.toString(), finalizar)
+//         }
+//     }
+
+//     fs.readFile(nomeArquivo, funcaoCallBackParaExiberConteudoNoFuturo) //funcao callback passada como parametro
+// }
+
+// abrirArquivo("arquivo.txt")
+
+// PROMISE
+// 3 estados possíveis:
+//    - Pending : Computação ainda não terminou, está pendente
+//    - Fullfilled : Computação finalizada com sucesso (o estado não retorna para pending)
+//    - Rejected : Computação finalizada com erro (o estado não retorna para pending)
+
+// // exemplos:
+// // somatorio da PA: 1 + 2 + ... + n-1 + n
+// function calculoDemorado(numero){
+//     // Promisse recebe como parametro uma função que é a computação relacionada a ela
+//     // deseja-se que a computação seja assíncrona
+
+//     // Essa função recebe 2 funções como parâmetros
+//     const p = new Promise(function(resolve, reject) {
+//         // --- Computação demorada ---
+//         if (numero < 0)
+//             reject("Por favor, informa apenas valores positivos.") // função chamada no catch
+//         else{
+//             let resultado = 0
+//             for (let i = 1; i<=numero; i++)
+//                 resultado += i
+//             delayMilliseconds(3000)
+
+//             // --- Chama-se a função resolve passando o resultado ---
+//             resolve(resultado) 
+//         }
+//     })
+    
+//     return p
+// }
+
+// const res = calculoDemorado(100)
+// //res.then((resultado) => print(resultado)) // then associa a função passada como parâmetro para a resolve e depois começa a computação
+
+// res.then((resultado) => print(resultado)).catch((mensagemDeErro) => print("Falhou: " + mensagemDeErro)) // catch associa a função interna com o reject que é executado caso ocorra um erro
+// // Se deu certo, executa-se o then e NÃO é executado o catch, caso contrário executa-se APENAS o catch
+
+// const res2 = calculoDemorado(-1)
+// res2.then((resultado) => print(resultado)).catch((mensagemDeErro) => print("Falhou: " + mensagemDeErro)) // catch associa a função interna com o reject que é executado caso ocorra um erro
+
+const testeDePromise = function (parametroGeral, op = 1){
+    return new Promise((funcaoAceitacao, funcaoRejeicao) => {
+        if (op === 0)
+                funcaoRejeicao(parametroGeral)
+        else
+                funcaoAceitacao(parametroGeral)        
+    })
+}
+
+const funcaoResultado = testeDePromise("Parametro geral")
+//print(typeof(funcaoResultado))
+funcaoResultado
+.then((valor) => print("Resultado da aceitacao: " + valor))
+.catch((valor) => print("Resultado rejeicao: " + valor))
