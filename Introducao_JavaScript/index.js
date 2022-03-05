@@ -199,36 +199,184 @@ const print = console.log
 // }
 // nome()
 // // Não tem sobrecarga de métodos, caso haja mais de uma definição da mesma função, a dupla passagem sobreescreve a função e a predominante será a última
-function soma (a, b){
-    return a + b
-}
-const res = soma(2, 3)
-console.log(res)
-const dobro = (n) => 2*n
-console.log(dobro(3))
-console.log(typeof(dobro))
+// function soma (a, b){
+//     return a + b
+// }
+// const res = soma(2, 3)
+// console.log(res)
+// const dobro = (n) => 2*n
+// console.log(dobro(3))
+// console.log(typeof(dobro))
 
-// funções são cidadãs de primeira classe, pode receber funções como parâmetro, produzir e chamalas
-// função que recebe outra função como parâmetro ou que cria uma funçãp: Higher Order function
-let umaFuncao = () => print("Fui armazenada em uma variável")
-umaFuncao()
+// // funções são cidadãs de primeira classe, pode receber funções como parâmetro, produzir e chamalas
+// // função que recebe outra função como parâmetro ou que cria uma funçãp: Higher Order function
+// let umaFuncao = () => print("Fui armazenada em uma variável")
+// umaFuncao()
 
-function f (funcao){ // higher order function
-    // callable
-    funcao()
-}
+// function f (funcao){ // higher order function
+//     // callable
+//     funcao()
+// }
 
-function g(){ // higher order function
-    function outraFuncao(){
-        print("Fui criada por g")
-    }
-    return outraFuncao
-}
+// function g(){ // higher order function
+//     function outraFuncao(){
+//         print("Fui criada por g")
+//     }
+//     return outraFuncao
+// }
 
-f(function () {
-    print("Estou sendo passada para f")
-})
+// f(function () {
+//     print("Estou sendo passada para f")
+// })
 
-//f(3) // valor não callable sendo tratado como callable
-print(g())
-g()()
+// //f(3) // valor não callable sendo tratado como callable
+// print(g())
+// g()()
+
+
+// //desenvolver uma nova coleção
+// //que possui todos os elementos
+// //de v que fazem com que f produza true
+// function filter(v, f){
+//     const returnList = []
+//     let counter = 0
+//     v.forEach(element => {
+//         if (f(element)){
+//             returnList[counter] = element
+//             counter++
+//         }
+//     });
+//     return returnList
+// }
+
+// // [2]
+// print(filter([1,2,3],e => e%2 ===0))
+
+// //produzir uma coleção nova
+// //que, para cada elemento de v[i]
+// //possui o valor resultante de f(v[i])
+// function map(v, f){
+//     let returnList = []
+//     let counter = 0
+//     v.forEach(element => {
+//         returnList[counter] = f(element)
+//         counter++
+//     });
+//     return returnList
+// }
+
+// //[4,3]
+// print(map(['abcd', 'abc'], e => e.length))
+
+// const user = "19.00828-7"
+// const mensagem = 'msg ' + user + ' "Contagem: '
+
+// for (let i = 0; i < 50; i++){
+// require('child_process').exec(mensagem + i + ' "')
+// }
+
+// function eAgora(){
+//     let cont = 1
+//     function f1(){
+//         print(cont)
+//     }
+//     cont++
+//     function f2(){
+//         print(cont)
+//     }
+//     // ISSO É UM OBJETO JSON
+//     return {f1, f2}
+// }
+
+// let res = eAgora()
+// res.f1()
+// res.f2()
+
+// JSON - Javascript Object Notation (delimitado por {} no js)
+// Consiste de pares chave - valor separados por vírgulas
+// let pessoa = {
+//     nome: "José",
+//     idade: 17
+// }
+// // Acessando os dados:
+// print(pessoa.nome)
+// print(pessoa['idade'])
+
+// let p = {
+//     nome: "Martin",
+//     idade: 20,
+//     endereco: {
+//         logradouro: "CU DO MUNDO",
+//         distancia: Infinity,
+//         numero: 666
+//     },
+//     elo: "Ferro Infinity"
+// }
+
+// print(p.endereco.distancia)
+
+// Para manipular JSON em outras linguagens: java (gson) - buscar bibliotecas
+
+// let c = {
+//     cnpj: 215252663522553621456755876465876,
+//     endereco: {
+//         logradouro: 'Rua das rolinhas',
+//         numero: 223,
+//         bairro: 'Maua JSON'
+//     },
+//     veiculos: [
+//         {
+//             marca: "Tesla",
+//             modelo: "PUSSY",
+//             ano: "2099",
+//             revisoes: [
+//                 {
+//                     data: '14/02/3982',
+//                     consultor: 'Martin'
+//                 },
+//                 {
+//                     data: '69/69/6969',
+//                     consultor: 'PI PA PA PA RO PO'
+//                 }
+//             ]
+//         },
+//         {
+//             marca: "Renault",
+//             modelo: "Kwid",
+//             ano: "2019"
+//         },
+//         {
+//             marca: "Hotwheels",
+//             modelo: "CARINHAFELIZ",
+//             ano: "196969"
+//         }
+//     ]
+// }
+
+// print(c.veiculos[0].revisoes[0].consultor)
+
+// É POSSÍVEL ARMAZENAR FUNCOES DENTRO DE JSONS
+
+// const calc = {
+//     soma : (a,b) => a+b,
+//     subtracao: (a,b) => a-b,
+//     multiplicacao: (a,b) => a*b,
+//     divisao: (a,b) => a/b,
+//     potenciacao: (a,b) => a**b,
+//     raiz: (a,b) => a**(1/b)
+// }
+
+// calc.multiplicacao = (multiplicador1, multiplicador2) => multiplicador1*multiplicador2
+// print(calc.soma(2,3))
+// print(calc.raiz(4,2))
+// print(calc.multiplicacao(2,3))
+
+// OMISSÃO DE VALORES EM JSON
+// se o nome da chave for o mesmo nome de uma variavel pode-se suprimir a declaração
+// exemplo:
+
+// const nome = 'Martin Ropke'
+// const oculos = true
+// const martinData = {nome, oculos}
+
+// print(martinData)
