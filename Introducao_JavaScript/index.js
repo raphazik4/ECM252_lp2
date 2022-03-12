@@ -506,17 +506,19 @@ function delayMilliseconds(time = 1000){
 // const res2 = calculoDemorado(-1)
 // res2.then((resultado) => print(resultado)).catch((mensagemDeErro) => print("Falhou: " + mensagemDeErro)) // catch associa a função interna com o reject que é executado caso ocorra um erro
 
-const testeDePromise = function (parametroGeral, op = 1){
-    return new Promise((funcaoAceitacao, funcaoRejeicao) => {
-        if (op === 0)
-                funcaoRejeicao(parametroGeral)
-        else
-                funcaoAceitacao(parametroGeral)        
-    })
-}
+// const testeDePromise = function (parametroGeral, op = 1){
+//     return new Promise((funcaoAceitacao, funcaoRejeicao) => {
+//         funcaoRejeicao(parametroGeral)
+//         funcaoAceitacao(parametroGeral)        
+        
+//     })
+// }
 
-const funcaoResultado = testeDePromise("Parametro geral")
-//print(typeof(funcaoResultado))
-funcaoResultado
-.then((valor) => print("Resultado da aceitacao: " + valor))
-.catch((valor) => print("Resultado rejeicao: " + valor))
+// const funcaoResultado = testeDePromise("Parametro geral")
+// //print(typeof(funcaoResultado))
+// print( funcaoResultado
+// .then((valor) => print("Resultado da aceitacao: " + valor), (valor) => print("Resultado rejeicao: " + valor)) )
+// // .then((valor) => print("Resultado da aceitacao_1: " + valor), (valor) => print("Resultado rejeicao_1: " + valor))
+// // .then((valor) => print("Resultado da aceitacao_2: " + valor), (valor) => print("Resultado rejeicao_2: " + valor))
+// // .then((valor) => print("Resultado da aceitacao_3: " + valor), (valor) => print("Resultado rejeicao_3: " + valor))
+// // .then((valor) => print("Resultado da aceitacao_4: " + valor), (valor) => print("Resultado rejeicao_4: " + valor))
