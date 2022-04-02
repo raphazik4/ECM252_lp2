@@ -38,5 +38,5 @@ app.post(path, (requestData, response) => {
 
 // Abrindo porta 4000 para receber requisições
 app.listen(port, () => {
-    print("Lembretes. Escutando a porta 4000")
+    print("Lembretes. Porta " + port + '.')
 })

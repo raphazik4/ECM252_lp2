@@ -1,8 +1,7 @@
 const print = console.log
 print("Iniciando microsserviço de OBSERVAÇÕES.")
-const { json } = require('express')
 const express = require('express')
-const {v4: uuidv4, stringify} = require('uuid') // importa o modulo uuid e pega a referência da função uuidv4() da chave v4
+const {v4: uuidv4} = require('uuid') // importa o modulo uuid e pega a referência da função uuidv4() da chave v4
 const app = express()
 
 // Middleware (executado) antes de ir pros destinos
@@ -41,5 +40,5 @@ app.post(path, (req, res) => { // o :id identifica que entre as 2 barras (anteri
 
 // Abrindo porta 5000 para receber requisições
 app.listen(port, () => {
-    print('Lembretes. Porta 5000.')
+    print('Observações. Porta ' + port + '.')
 })
