@@ -1,5 +1,6 @@
 const print = console.log
 print("Iniciando microsserviço de OBSERVAÇÕES.")
+const { default: axios } = require('axios')
 const express = require('express')
 const {v4: uuidv4} = require('uuid') // importa o modulo uuid e pega a referência da função uuidv4() da chave v4
 const app = express()
@@ -9,6 +10,7 @@ app.use(express.json())
 
 // Definição de dados
 const path = '/lembretes/:id/observacoes' // significa que o valor será substituido
+const event = '/eventos'
 const port = 5000
 
 const observacoesPorLembreteId = {'': ''}
@@ -41,4 +43,10 @@ app.post(path, (req, res) => { // o :id identifica que entre as 2 barras (anteri
 // Abrindo porta 5000 para receber requisições
 app.listen(port, () => {
     print('Observações. Porta ' + port + '.')
+})
+
+// REQUISIÇÕES PARA O BARRAMENTO DE EVENTOS
+app.post(event, (req, res) => {
+    print("RECEBIDA RESPOSTA DO BARRAMENTO")
+    res.status(200)
 })
