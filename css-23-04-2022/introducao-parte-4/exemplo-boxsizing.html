@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Sizing</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        p{ /*Margem dos p se sobrepõe*/
+        }
+        .caixa1, .caixa2{
+            border: 1px solid black;
+            width: 250px;
+            text-align: justify;
+            background-color: #ccc;
+            padding: 12px;
+        }
+        .caixa1{ /*O Alinhamento considera a borda, ex: com borda de 5px, tem-se 10px de desalinhamento*/
+            border: 5px solid black;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box; /*Se é para considerar border e padding ou não, por padrão considera-se, se não, o border-box ajusta o width total par o definido*/
+        }
+        .caixa2{
+            box-sizing: border-box;
+        }
+        .rodape{
+            background-color: aliceblue;
+            padding: 12px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <p class="caixa1">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut nostrum nihil maxime. Cum sed nostrum neque cupiditate inventore nisi quod maxime accusamus provident doloribus. Magni itaque molestias tempora ratione unde.
+        </p>
+        <p class="caixa2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos commodi asperiores, porro rerum, voluptas ratione, odit atque dolor in dolores voluptates. Veniam magnam non repudiandae dolorem quis, deserunt dolore excepturi.
+        </p>
+        <footer class="rodape">Volte Sempre</footer>
+    </article>
+</body>
+</html>

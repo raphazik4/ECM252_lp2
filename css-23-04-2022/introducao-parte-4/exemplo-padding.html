@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padding</title>
+    <style>
+        .primeiro, .segundo{
+            display: inline-block;
+            width: 200px;
+            border: 2px solid black;
+            background-color: #ccc;
+        }
+        .primeiro{
+            padding: 55px;
+        }
+        .segundo{/*CSS É PROCESSADO DE CIMA PARA BAIXO, QUEM APARECE POR ULIMO TEM PREFERÊNCIA*/
+            padding-top: 25px;
+            padding-left: 15px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+        }
+        article{
+            border: 2px solid blue;
+            padding: 30px;
+        }
+        body{
+            border: 2px solid red;
+            padding: 3px;
+        }
+        html{
+            border: 2px solid green;
+        }
+    </style>
+</head>
+    <body>
+        <article>
+            <p class="primeiro">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, quibusdam! Provident vero cums? Quasi, quos.</p>
+            <p class="segundo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos quis laborum deserunt minima ipsum magnam dolore! Itaque maiores, labore facilis excepturi aliquam veniam aperiam repellat consectetur quasi, nihil aspernatur. Et?</p>
+        </article>
+    </body>
+</html>

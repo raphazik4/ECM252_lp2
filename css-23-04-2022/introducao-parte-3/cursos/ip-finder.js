@@ -9,7 +9,7 @@ for(let i = 0; i < 256; i++){
         if (response.status === 200){
             iplist[listindex] = i
             listindex++
-            console.log(iplist)
+            console.log(`http://10.33.109.${i}:5500/`)
         }
     }).catch((error) => {
         falseIps++
