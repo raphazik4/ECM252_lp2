@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Seletores descendentes</title>
+    <style>
+        main > article section > p.coordenadores{
+
+        }
+        main p{
+            color: red;
+        }
+        main > p{ /*Afeta somente os p que são filhos diretos de main*/
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit optio deleniti officia. Obcaecati tempora numquam illum ducimus. Asperiores sapiente iste nam iusto optio veniam pariatur, quia possimus molestias? Delectus, illo!</p>
+
+        <article>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quae molestiae maiores earum eaque quos deleniti libero cupiditate dolorum animi cumque repellat reprehenderit vero sed nulla cum, facere delectus dolorem.
+            </p>
+        </article>
+    </main>
+</body>
+</html>

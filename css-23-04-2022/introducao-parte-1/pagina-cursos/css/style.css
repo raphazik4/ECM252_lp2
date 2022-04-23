@@ -1,0 +1,7 @@
+.novo-curso, .curso, #contato{ /*Pode-se considerar a vírgula como um OU*/
+    background-color: aliceblue;
+}
+
+.novo-curso{
+    color: red;
+}

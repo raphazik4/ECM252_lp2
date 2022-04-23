@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Seletores descendentes</title>
+    <style>
+        /*Seleciona todos os p's que são descendentes do article*/
+        article p{
+            background-color: #ccd;
+            color: blue;
+        }
+        p{
+            color: red;
+        }
+        .coordenadores{
+            background-color: whitesmoke;
+        }
+        /*Seletor css válido abaixo, especificidade 3 (0,0,3)
+        p p p{
+            color: blueviolet;
+        }
+        #principal p.promocao #outroid{
+
+        }
+        body #principal article section p.coordenadores{
+
+        }
+        */
+    </style>
+</head>
+<body>
+    <main>
+        <h1 id="titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, quis?</h1>
+        <p id="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam harum nihil temporibus fugiat vel qui quos cum accusantium veritatis et?</p>
+        <p class="promocao nova">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, vero voluptates harum rerum repellat quaerat tempore, quia vitae natus pariatur deserunt magni? Aperiam libero quod vero accusamus in sed quisquam totam id? Possimus architecto necessitatibus nostrum. Blanditiis sunt aspernatur ipsum dolorem fugiat libero molestias tempore est placeat rerum? Quasi, cupiditate.</p>
+
+        <p>Cursos</p>
+        <article>
+            <p class="novo-curso">Medicina</p>
+            <p class="curso">Engenharia de Computação</p>
+            <p class="curso">Farmácia</p>
+            <section>
+                <p class="coordenadores"> <!--este p também está sob efeito de artible p, pois ele é descendente, mesmo que não seja filho direto-->
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dolores reprehenderit modi nihil ducimus voluptatem rem maiores nisi omnis cumque alias saepe in earum quae odit fuga, ullam maxime ad.
+                </p>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
