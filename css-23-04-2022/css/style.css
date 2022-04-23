@@ -1,15 +1,72 @@
-h1 {
+/*h1 {
     color: brown;
+}*/
+
+html{
+    background-color: rgb(142, 223, 255);
+}
+
+#titulo{ /*Seletor de id, este possuí especificidade 100 (1,0,0)*/
+    color: brown;
+    text-align: center;
+    font-size: 50px;
 }
 
 p {
-    color: blue;
+    color: rgb(0, 255, 0);
+}
+
+p#descricao{ /*Seletor mais específico 101 (1,0,1) - ganha pontos pelo p (0,0,1) e pelo #descricao (1,0,0)*/
+    text-align: center;
+    font-size: 30px;
+    color: rgb(0, 71, 12);
 }
 
 strong{
-    color: red;
+    color: rgb(255, 70, 70);
+}
+
+.restricao{ /*Seletor de classe, especificidade 10*/
+    text-align: center;
+    background-color: black;
+}
+
+p.restricao {
+    font-size: 30px;
+}
+
+p.promocao.nova{
+    color: black;
+    text-align: center;
+    background-color: blue;
+}
+
+p.final-pagina{
+    color: black;
+    text-align: right;
+    background-color: rgb(0, 255, 98);
+}
+
+p#rodape.final-pagina{
+    color: black;
+    text-align: center;
 }
 
 .mexican-panda-image{
+    
     width: 500px;
 }
+
+/*
+    Comentário em css
+*/
+
+/*
+Especificidades:
+Tipo básico html (p, h1, html)
+    pouco específico - pontuação 1
+Classe html (class="class-name")
+    mais específico  - pontuação 10
+Id html (id="tag-id")
+    muito específico - pontuação 100
+*/
