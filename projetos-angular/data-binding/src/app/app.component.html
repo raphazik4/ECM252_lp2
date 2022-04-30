@@ -1,0 +1,41 @@
+Meu nome é {{nome}} e tenho {{idade}} anos.
+
+<br><br><br>
+Lançando dados:
+<br>
+Dado 1: {{lancarDado()}}
+<br>
+Dado 2: {{lancarDado()}}
+<br>
+Dado 3: {{lancarDado()}}
+<br>
+Dado 4: {{lancarDado()}}
+<br>
+Dado 5: {{lancarDado()}}
+<br>
+Dado 6: {{lancarDado()}}
+<br>
+Dado 7: {{lancarDado()}}
+<br>
+Dado 8: {{lancarDado()}}
+<br>
+Dado 9: {{lancarDado()}}
+<br>
+
+{{reload()}}
+
+<div class="container m-3 border p-3">
+  <form>
+    <div class="form-group mb-2">
+      <label for="nomeInput"><strong>Nome</strong></label>
+      <br>
+      <input (input)="alterarNome($event)" id="nomeInput" type="text" class="form-control" placeholder="Digite algo...">
+    </div>
+    <div>
+      <button (click)="adicionar()" type="button" class="btn btn-primary">Adicionar</button>
+    </div>
+    <div class="alert alert-primary mt-3 p-3">
+      {{nome}}
+    </div>
+  </form>
+</div>
