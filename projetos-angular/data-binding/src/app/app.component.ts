@@ -6,9 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  numero:Number
+
   title = 'data-binding';
   nome = "Anya"
   idade = 6
+  esconderCaixa = true
+
+  escolher():void{
+    this.numero = Math.round(Math.random() * 100)
+  }
 
   lancarDado() : number{ // tipagem estática do typescript
     return Math.random() * 6
@@ -16,6 +23,7 @@ export class AppComponent {
 
   adicionar():void{
     console.log("Adicionando...")
+    //this.nome = nomeInput.value
   }
 
   alterarNome(event){
@@ -23,8 +31,8 @@ export class AppComponent {
     this.nome = event.target.value
   }
 
-  reload(){
-    location.reload()
-  }
+  // reload(){
+  //   location.reload()
+  // }
 
 }

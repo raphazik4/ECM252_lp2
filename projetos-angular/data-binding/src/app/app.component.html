@@ -1,4 +1,17 @@
-Meu nome é {{nome}} e tenho {{idade}} anos.
+<div class="container my-3 border p-3">
+  <div class="form-group">
+    <label for="numeroInput">Escolha um número</label>
+    <input type="number" class="form-control" id="numeroInput" placeholder="Escolha um número" [(ngModel)]="numero">
+    <div class="alert alert-primary mt-3 p-3 text-center">
+      {{numero}}
+    </div>
+    <button (click)="escolher()" type="button" class="btn btn-primary">
+      Escolher para mim
+    </button>
+  </div>
+</div>
+
+<!-- Meu nome é {{nome}} e tenho {{idade}} anos.
 
 <br><br><br>
 Lançando dados:
@@ -29,13 +42,13 @@ Dado 9: {{lancarDado()}}
     <div class="form-group mb-2">
       <label for="nomeInput"><strong>Nome</strong></label>
       <br>
-      <input (input)="alterarNome($event)" id="nomeInput" type="text" class="form-control" placeholder="Digite algo...">
+      <input (input)="alterarNome($event)" id="nomeInput" type="text" class="form-control" placeholder="Digite algo..." #nomeInput>
     </div>
     <div>
-      <button (click)="adicionar()" type="button" class="btn btn-primary">Adicionar</button>
+      <button (click)="adicionar(nomeInput)" type="button" class="btn btn-primary">Adicionar</button>
     </div>
-    <div class="alert alert-primary mt-3 p-3">
+    <div class="alert alert-primary mt-3 p-3" [hidden]="esconderCaixa">
       {{nome}}
     </div>
   </form>
-</div>
+</div> -->
