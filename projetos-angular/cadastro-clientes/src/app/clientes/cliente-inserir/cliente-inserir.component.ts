@@ -3,7 +3,10 @@ import { Component } from "@angular/core";
 @Component({
     selector: 'app-cliente-inserir',
     //template: '<p>Oi</p>'
-    templateUrl: './cliente-inserir.component.html'
+    templateUrl: './cliente-inserir.component.html',
+    styleUrls: [
+        './cliente-inserir.component.css'
+    ]
 })
 export class ClienteInserirComponent{
     nome : string
@@ -11,6 +14,8 @@ export class ClienteInserirComponent{
     email: string
 
     onAdicionarCliente(){
-        console.log("Inserindo Cliente..." + this.nome, this.fone, this.email)
+        let jsonData = `{\n"nome" : "${this.nome}",\n"email" : "${this.email}",\n"fone" : "${this.fone}"\n}`
+        let message = `Dados inseridos com sucesso!\n\n${jsonData}`
+        alert(message)
     }
 }
