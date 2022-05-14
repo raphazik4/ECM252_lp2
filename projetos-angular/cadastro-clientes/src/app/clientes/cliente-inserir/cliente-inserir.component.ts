@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
+
 
 @Component({
     selector: 'app-cliente-inserir',
@@ -9,14 +10,17 @@ import { Component } from "@angular/core";
     ]
 })
 export class ClienteInserirComponent{
+
+    @Output()
+    clienteAdicionado = new EventEmitter()
+
     nome : string
     fone : string
     email: string
 
     onAdicionarCliente(){
         let jsonStringData = `{\n"nome" : "${this.nome}",\n"email" : "${this.email}",\n"fone" : "${this.fone}"\n}`
-        let message = `Dados NÃO inseridos com sucesso!\n\n${jsonStringData}`
         let jsonData = JSON.parse(jsonStringData)
-        alert(message)
+        this.clienteAdicionado.emit(jsonData)
     }
 }
