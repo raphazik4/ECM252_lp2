@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { Cliente } from "../cliente.model";
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
 export class ClienteInserirComponent{
 
     @Output()
-    clienteAdicionado = new EventEmitter()
+    clienteAdicionado = new EventEmitter <Cliente>()
 
     nome : string
     fone : string
@@ -20,7 +21,7 @@ export class ClienteInserirComponent{
 
     onAdicionarCliente(){
         let jsonStringData = `{\n"nome" : "${this.nome}",\n"email" : "${this.email}",\n"fone" : "${this.fone}"\n}`
-        let jsonData = JSON.parse(jsonStringData)
+        let jsonData: Cliente = JSON.parse(jsonStringData)
         this.clienteAdicionado.emit(jsonData)
     }
 }
