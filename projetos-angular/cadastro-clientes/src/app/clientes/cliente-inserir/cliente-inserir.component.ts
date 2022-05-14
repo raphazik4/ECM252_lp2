@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Cliente } from "../cliente.model";
+import { ClienteService } from "../cliente.service";
 
 
 @Component({
@@ -13,16 +14,12 @@ import { Cliente } from "../cliente.model";
 })
 export class ClienteInserirComponent{
 
-    @Output()
-    clienteAdicionado = new EventEmitter <Cliente>()
+    constructor(private clienteService: ClienteService){
+
+    }
 
     onAdicionarCliente(form: NgForm){
         if (form.invalid) return
-        let jsonData: Cliente = {
-            nome: form.value.nome,
-            fone: form.value.fone,
-            email: form.value.email
-        }
-        this.clienteAdicionado.emit(jsonData)
+        this.clienteService.adicionarCliente(form.value.nome, form.value.fone, form.value.email)
     }
 }

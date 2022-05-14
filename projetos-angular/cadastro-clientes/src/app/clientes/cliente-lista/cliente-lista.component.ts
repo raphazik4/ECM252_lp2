@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cliente } from '../cliente.model';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-cliente-lista',
@@ -8,23 +9,12 @@ import { Cliente } from '../cliente.model';
 })
 export class ClienteListaComponent implements OnInit {
 
-  @Input()
-  clientes: Cliente[] = [
-    // {
-    //   nome: 'José',
-    //   fone: '123455678',
-    //   email: 'jose@email.com'
-    // },
-    // {
-    //   nome: 'Maria',
-    //   fone: '98765432',
-    //   enmail: 'maria@email.com'
-    // }
-  ]
+  clientes: Cliente[] = []
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.clientes = this.clienteService.getClientes()
   }
 
 }
