@@ -14,8 +14,9 @@ export class ClienteInserirComponent{
     email: string
 
     onAdicionarCliente(){
-        let jsonData = `{\n"nome" : "${this.nome}",\n"email" : "${this.email}",\n"fone" : "${this.fone}"\n}`
-        let message = `Dados inseridos com sucesso!\n\n${jsonData}`
+        let jsonStringData = `{\n"nome" : "${this.nome}",\n"email" : "${this.email}",\n"fone" : "${this.fone}"\n}`
+        let message = `Dados NÃO inseridos com sucesso!\n\n${jsonStringData}`
+        let jsonData = JSON.parse(jsonStringData)
         alert(message)
     }
 }
