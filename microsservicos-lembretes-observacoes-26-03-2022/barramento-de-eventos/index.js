@@ -9,8 +9,7 @@ app.use(express.json())
 
 // Definição de dados
 const eventPath = '/eventos'
-const lembretesPath = 'http://localhost:4000/eventos'
-const observacoesPath = 'http://localhost:5000/eventos'
+const mssPath = ['http://localhost:4000/eventos', 'http://localhost:5000/eventos']
 const port = 10000
 
 // GET
@@ -18,18 +17,19 @@ const port = 10000
 // POST
 app.post(eventPath, async (req, res) => {
     print("Requisição POST recebida")
-    const evento = req.body // {tipo: LembreteCriado, dados: {}}
+    const evento = req.body // {tipo: LembreteCriado, dados: {contador, texto}}
 
     try{
-        await axios.post(lembretesPath, evento)
-        await axios.post(observacoesPath, evento)
+        mssPath.forEach(mss => {
+            await axios.post(mss, evento)
+        })
     }
     catch (e){
         print(e)
         res.status(500).send(e)
     }
 
-    res.status(200).json({"msg":ok})
+    res.status(200).send({"msg":ok})
 })
 
 // Abrindo porta 10000 para receber requisições

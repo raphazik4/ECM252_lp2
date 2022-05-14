@@ -52,8 +52,10 @@ app.post(path, async (requestData, response) => { // async para poder usar o awa
     }
     
     // ------------- Barramento -----------------
-
-    response.status(201).send(lembretes[contador]) // status para criado - devolve
+    finally{
+        print("Resposta para o cliente")
+        response.status(201).send(lembretes[contador]) // status para criado - devolve
+    }
 })
 
 // Abrindo porta 4000 para receber requisições
@@ -61,7 +63,7 @@ app.listen(port, () => {
     print("Lembretes. Porta " + port + '.')
 })
 
-// REQUISIÇÕES PARA O BARRAMENTO DE EVENTOS
+// RECEBIMENTO DE REQUISIÇÕES DO BARRAMENTO DE EVENTOS
 app.post(event, (req, res) => {
     print("RECEBIDA RESPOSTA DO BARRAMENTO")
     res.status(200)
