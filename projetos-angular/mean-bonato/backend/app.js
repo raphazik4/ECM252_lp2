@@ -1,6 +1,26 @@
+require('dotenv').config()
+const mongoose = require('mongoose');
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const { Console } = require('console');
+const Cliente = require('./models/cliente')
+
+app.use(bodyParser.json())
+
+const {
+  MONGODB_USER, MONGODB_PASSWORD,
+  MONGODB_CLUSTER, MONGODB_HOST, MONGODB_DATABASE
+} = process.env;
+
+mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER}.${MONGODB_HOST}.mongodb.net/${MONGODB_DATABASE}?retryWrites=true&w=majority`)
+.then( () => {
+  console.log('Conexão OK')
+} )
+.catch( (e) => {
+  console.log('Conexão NÃO OK: ' + e)
+} )
 
 app.use(bodyParser.json());
 
@@ -26,17 +46,19 @@ app.use((req, res, next) => {
   next();
 })
 
-app.post('api/clientes', (req, res, next) => {
-  const cliente = req.body;
-  console.log(cliente);
+app.post('/api/clientes', (req, res, next) => {
+
+  cli.save()
   res.status(201).json({mensagem: 'Cliente inserido'});
 });
 
-app.use('/api/clientes', (req, res, next) => {
-  res.status(200).json({
-    mensagem: 'Tudo OK',
-    clientes: clientes
+app.get('/api/clientes', (req, res, next) => {
+  Cliente.find({}).then((data) => {
+    res.status(200).json({
+      mensagem: 'Tudo OK',
+      clientes: data
+    });
   });
-});
+})  
 
 module.exports = app;
