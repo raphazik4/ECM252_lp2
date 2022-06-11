@@ -12,20 +12,22 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const {
-  MONGODB_USER, MONGODB_PASSWORD,
-  MONGODB_CLUSTER, MONGODB_HOST, MONGODB_DATABASE
+  MONGODB_CONNECTION
 } = process.env;
 
 // Conexão com banco de dados
-mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER}.${MONGODB_HOST}.mongodb.net/${MONGODB_DATABASE}?retryWrites=true&w=majority`)
+mongoose.connect(`${MONGODB_CONNECTION}`)
 .then( () => {console.log('Conexão OK')}).catch( (e) => {console.log('Conexão NÃO OK: ' + e)})
 
 // Definição de rotas
 
 app.delete('/api/clientes/:id', (req, res, next) => {
   const id = req.params.id
-  Cliente.deleteOne({_id: id}).then((res) => {
-    res.json({mensagem: `O cliente de id ${id} foi removido com sucesso`})
+  Cliente.deleteOne({_id: id}).then((data) => {
+    res.status(200).json({
+      mensagem: 'Cliente removido com sucesso!',
+      id: data.id
+    });
   })
 })
 
@@ -39,8 +41,11 @@ app.get('/api/clientes', (req, res, next) => {
 })
 
 app.post('/api/clientes', (req, res, next) => {
-  new Cliente(req.body).save().then(() => {
-    res.status(201).json({mensagem: 'Cliente inserido'});
+  new Cliente(req.body).save().then((cliInserido) => {
+    res.status(201).json({
+      mensagem: `Cliente inserido`,
+      id : cliInserido._id
+  });
   })
 });
 
